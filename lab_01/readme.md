@@ -189,6 +189,10 @@ git push -u origin main
 ```
 
 3. A browser window will open for **Git Credential Manager** to sign you in. Authorize it. This is how Git authenticates on Windows, so you do not need to type a password.
+
+**WARNING!!!**  
+If you are asked to type a password, abort it (`CTRL + C`), apply a command: `git config --global credential.helper manager` and try the `push` command once again.
+
 4. Refresh the repository page on GitHub. You should see your files, your commits and your README rendered as formatted text.
 
 `origin` is just the default name for the remote. `-u` remembers it, so later `git push` and `git pull` need no arguments.
