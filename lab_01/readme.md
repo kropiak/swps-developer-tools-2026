@@ -1,7 +1,5 @@
 # Lab 01: Git Basics + Markdown (Windows)
 
-*Developer Tools 2025/2026 · 90 minutes · 8 points · Environment: local Git for Windows + GitHub*
-
 ## Learning outcomes
 
 After this lab you will be able to:
@@ -13,7 +11,6 @@ After this lab you will be able to:
 - write simple documentation in Markdown,
 - publish a local repository to GitHub.
 
-Course outcomes covered: INF1\_W01, INF1\_U15.
 
 ## Before you start (Lab 0 checklist)
 
