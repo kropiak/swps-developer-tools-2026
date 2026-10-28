@@ -311,5 +311,5 @@ Your `dev-tools-lab02` history must show at least one fast-forward merge, one me
 There are several interactive "tools" to play and learn git. Please check them out:
 - https://ohmygit.org/
 - https://learngitbranching.js.org
-- https://k88hudson/git-flight-rules
+- [https://github.com/k88hudson/git-flight-rules](https://github.com/k88hudson/git-flight-rules)]
 - https://gitimmersion.com
