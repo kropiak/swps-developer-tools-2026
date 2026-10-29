@@ -39,14 +39,13 @@ You will work in pairs in Part 3. Find a partner at the beginning of the class.
 
 A **branch** is a lightweight, movable pointer to a commit. Branches let you try out an idea or develop a feature without touching the stable `main` branch. When the work is ready, you **merge** it back.
 
-Create a fresh practice repository:
 
 ```bash
-cd ~
-mkdir dev-tools-lab02
-cd dev-tools-lab02
-git init
-printf "# Shopping list\n\n- bread\n- milk\n- eggs\n" > shopping.md
+# nawigate to our repository created in lab 1
+cd path # replace with correct path
+echo My shopping list > shopping.md
+# or on Linux/Mac
+echo "My shopping list" > shopping.md
 git add shopping.md
 git commit -m "Add shopping list"
 ```
@@ -55,6 +54,7 @@ git commit -m "Add shopping list"
 
 ```bash
 git branch
+# this creates a new branch (-c option) and switch to it just afterwards
 git switch -c feature/fruits
 ```
 
@@ -70,9 +70,14 @@ Go back to `main` and merge:
 
 ```bash
 git switch main
+# cat - works on Linux/MacOs
 cat shopping.md
+# type - works on Windows
+type shopping.md
+# this will merge feature branch to current branch
 git merge feature/fruits
 git log --oneline --graph --all --decorate
+# this deletes the feature branch
 git branch -d feature/fruits
 ```
 
@@ -112,18 +117,23 @@ A conflict happens when two branches change **the same lines** and Git cannot de
 Create the situation on purpose:
 
 ```bash
-git switch -c feature/bread
-sed -i 's/- bread/- whole grain bread/' shopping.md
-git commit -am "Prefer whole grain bread"
+# 1. create and switch to a new branch
+git switch -c feature/water
+# 2. replace the line - water with a new value - coconut water
+# open editor and do the change
+# 3. commit changes
+git commit -am "Prefer coconut water"
 
+# 4. go back to the main branch
 git switch main
-sed -i 's/- bread/- gluten-free bread/' shopping.md
-git commit -am "Prefer gluten-free bread"
-
-git merge feature/bread
+# 5. replace the line - water with a new value - sparkling water
+# open editor and do the change
+# 6. commit changes
+git commit -am "Prefer sparkling water"
+# 7. merge
+git merge feature/water
 ```
 
-> `sed` replaces text in a file. You will learn more about it later in the course; for now treat the command as a way to edit a line.
 
 Git stops and says `CONFLICT`. Check the state:
 
@@ -131,18 +141,18 @@ Git stops and says `CONFLICT`. Check the state:
 git status
 ```
 
-Open the file in VS Code (`code shopping.md`). You will see conflict markers:
+Open the file in VS Code (`code shopping.md`). You will see conflict markers (your view migh look a little bit different):
 
 ```
 <<<<<<< HEAD
-- gluten-free bread
+- sparkling water
 =======
-- whole grain bread
->>>>>>> feature/bread
+- coconut water
+>>>>>>> feature/water
 ```
 
 - The part between `<<<<<<< HEAD` and `=======` is your current branch (`main`).
-- The part between `=======` and `>>>>>>> feature/bread` comes from the branch you are merging.
+- The part between `=======` and `>>>>>>> feature/water` comes from the branch you are merging.
 
 Resolve it: in VS Code click **Accept Current Change**, **Accept Incoming Change** or **Accept Both Changes**, or edit the text by hand. The result must contain **no markers**. Then:
 
@@ -153,7 +163,7 @@ git commit
 
 If you panic, you can cancel the whole merge with `git merge --abort`.
 
-**Exercise.** Make a second conflict, this time resolve it so that the line says `- bread (gluten-free, whole grain)`.
+**Exercise.** Make a second conflict, this time resolve it so that the line says `- water (coconut, sparkling)`.
 
 ## 3. Working in pairs on a shared repository
 
@@ -170,7 +180,9 @@ In this part you are **Student A** or **Student B**. In the second round you swa
 2. Clone the repository:
 
 ```bash
-cd ~
+cd ~ # Linux/Mac
+# nawigate to C:\Users\your user name on Windows using cd or
+# opening a new terminal
 git clone https://github.com/<student-a-username>/dev-tools-pair.git
 cd dev-tools-pair
 ```
@@ -260,17 +272,16 @@ git push -u origin add-<your-username>
 
 Submit in Google Classroom (assignment *Lab 02*):
 
-1. the link to your `dev-tools-lab02` repository (pushed to GitHub: add the remote and push as in Lab 01),
-2. the link to `dev-tools-pair`,
-3. the link to your pull request.
 
-Your `dev-tools-lab02` history must show at least one fast-forward merge, one merge commit and one resolved conflict (use `git log --oneline --graph --all`).
+1. the link to `dev-tools-pair`,
+2. the link to your pull request.
+
 
 ### Grading (8 points)
 
 | Criterion | Points |
 | --- | --- |
-| Local branches and merges in `dev-tools-lab02` (fast-forward and merge commit) | 2 |
+| Local branches and merges in local repo (fast-forward and merge commit) | 2 |
 | Conflict resolved correctly (no markers left in the file) | 2 |
 | Pair work: `dev-tools-pair` has commits from both students and a resolved conflict | 2 |
 | Pull request opened to the course repository | 1 |
