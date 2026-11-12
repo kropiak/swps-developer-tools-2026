@@ -63,8 +63,8 @@ pwd           # print working directory (where you are right now)
 Download (or copy from the course repository) the two helper scripts `setup_lab03.sh` and `verify_lab03.sh` into your `dev-tools-lab03` directory, then run the setup script:
 
 ```bash
-curl -sO https://raw.githubusercontent.com/kropiak/swps-developer-tools/main/lab_03/setup_lab03.sh
-curl -sO https://raw.githubusercontent.com/kropiak/swps-developer-tools/main/lab_03/verify_lab03.sh
+curl -sO https://raw.githubusercontent.com/kropiak/swps-developer-tools-2026/main/lab_03/setup_lab03.sh
+curl -sO https://raw.githubusercontent.com/kropiak/swps-developer-tools-2026/main/lab_03/verify_lab03.sh
 bash setup_lab03.sh
 ```
 
